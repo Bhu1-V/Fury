@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlidingDone : MonoBehaviour
-{
+public class SlidingDone : MonoBehaviour {
     [Header("References")]
     public Transform orientation;
     public Transform playerObj;
@@ -23,34 +22,30 @@ public class SlidingDone : MonoBehaviour
     private float horizontalInput;
     private float verticalInput;
 
-    private void Start()
-    {
+    private void Start() {
         rb = GetComponent<Rigidbody>();
         pm = GetComponent<PlayerMovementAdvancedDone>();
 
         startYScale = playerObj.localScale.y;
     }
 
-    private void Update()
-    {
+    private void Update() {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetKeyDown(slideKey) && (horizontalInput != 0 || verticalInput != 0))
+        if(Input.GetKeyDown(slideKey) && (horizontalInput != 0 || verticalInput != 0))
             StartSlide();
 
-        if (Input.GetKeyUp(slideKey) && pm.sliding)
+        if(Input.GetKeyUp(slideKey) && pm.sliding)
             StopSlide();
     }
 
-    private void FixedUpdate()
-    {
-        if (pm.sliding)
+    private void FixedUpdate() {
+        if(pm.sliding)
             SlidingMovement();
     }
 
-    public void StartSlide()
-    {
+    public void StartSlide() {
         pm.sliding = true;
 
         playerObj.localScale = new Vector3(playerObj.localScale.x, slideYScale, playerObj.localScale.z);
@@ -59,21 +54,18 @@ public class SlidingDone : MonoBehaviour
         slideTimer = maxSlideTime;
     }
 
-    private void SlidingMovement()
-    {
+    private void SlidingMovement() {
         Vector3 inputDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
         // sliding normal
-        if (!pm.OnSlope() || rb.velocity.y > -0.1f)
-        {
+        if(!pm.OnSlope() || rb.velocity.y > -0.1f) {
             slideTimer -= Time.deltaTime;
 
             rb.AddForce(inputDirection.normalized * slideForce, ForceMode.Force);
         }
 
         // sliding down a slope
-        else
-        {
+        else {
             rb.AddForce(pm.GetSlopeMoveDirection(inputDirection) * slideForce, ForceMode.Force);
 
             // does that make any difference?
@@ -81,12 +73,11 @@ public class SlidingDone : MonoBehaviour
         }
 
         // stop sliding again
-        if (slideTimer <= 0)
+        if(slideTimer <= 0)
             StopSlide();
     }
 
-    public void StopSlide()
-    {
+    public void StopSlide() {
         pm.sliding = false;
 
         playerObj.localScale = new Vector3(playerObj.localScale.x, startYScale, playerObj.localScale.z);

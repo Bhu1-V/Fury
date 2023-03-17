@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovingTarget : MonoBehaviour
-{
+public class MovingTarget : MonoBehaviour {
     [Header("Moving")]
     public Vector3 startPos;
     public Vector3 endPos;
@@ -19,21 +18,18 @@ public class MovingTarget : MonoBehaviour
     float distanceToStartPos;
     float distanceToEndPos;
 
-    private void Start()
-    {
+    private void Start() {
         movingToEnd = true;
 
         destination = endPos;
     }
 
-    private void Update()
-    {
+    private void Update() {
         // change target destination
-        if (PositionReached())
-        {
+        if(PositionReached()) {
             movingToEnd = !movingToEnd;
 
-            if (movingToEnd)
+            if(movingToEnd)
                 destination = endPos;
             else
                 destination = startPos;
@@ -41,22 +37,20 @@ public class MovingTarget : MonoBehaviour
 
         MoveTarget();
     }
-    private void MoveTarget()
-    {
+    private void MoveTarget() {
         Vector3 direction = destination - transform.localPosition;
 
         transform.Translate(direction.normalized * Time.deltaTime * moveSpeed * -1f);
     }
 
-    private bool PositionReached()
-    {
+    private bool PositionReached() {
         distanceToStartPos = (startPos - transform.localPosition).magnitude;
         distanceToEndPos = (endPos - transform.localPosition).magnitude;
 
-        if (distanceToStartPos < distanceThreshold && !movingToEnd)
+        if(distanceToStartPos < distanceThreshold && !movingToEnd)
             return true;
 
-        else if (distanceToEndPos < distanceThreshold && movingToEnd)
+        else if(distanceToEndPos < distanceThreshold && movingToEnd)
             return true;
 
         else

@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoostPad_MLab_Uncommented : MonoBehaviour
-{
+public class BoostPad_MLab_Uncommented : MonoBehaviour {
     [Header("Boosting")]
     public bool normalBoosting = true;
     public Vector3 boostDirection;
@@ -17,38 +16,32 @@ public class BoostPad_MLab_Uncommented : MonoBehaviour
 
     private PlayerMovementAdvanced pm = null;
 
-    private void OnTriggerEnter(Collider other)
-    {
+    private void OnTriggerEnter(Collider other) {
         AddForce(other);
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
+    private void OnCollisionEnter(Collision collision) {
         AddForce(collision.collider);
     }
 
-    private void AddForce(Collider other)
-    {
-        if (other.GetComponentInParent<PlayerMovementAdvanced>() != null)
-        {
+    private void AddForce(Collider other) {
+        if(other.GetComponentInParent<PlayerMovementAdvanced>() != null) {
             pm = other.GetComponentInParent<PlayerMovementAdvanced>();
 
             Rigidbody rb = pm.GetComponent<Rigidbody>();
 
-            if (normalBoosting)
+            if(normalBoosting)
                 rb.AddForce(boostDirection.normalized * boostForce, ForceMode.Impulse);
 
-            if (localBoosting)
-            {
+            if(localBoosting) {
                 Vector3 localBoostedDirection = pm.orientation.forward * boostLocalForwardForce + pm.orientation.up * boostLocalUpwardForce;
                 rb.AddForce(localBoostedDirection, ForceMode.Impulse);
             }
         }
     }
 
-    private void OnDrawGizmosSelected()
-    {
-        if (!normalBoosting) return;
+    private void OnDrawGizmosSelected() {
+        if(!normalBoosting) return;
 
         Gizmos.color = Color.yellow;
         Gizmos.DrawLine(transform.position, transform.position + boostDirection);

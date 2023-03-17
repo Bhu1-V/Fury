@@ -54,6 +54,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -123,7 +124,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6685087802188992989}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 427961f067786294880b83fad5ecf8d0, type: 3}
+  m_Script: {fileID: 11500000, guid: dc838b8a263a3e343bc4a21f5e490240, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  startPos: {x: 0, y: 0, z: 0}
+  endPos: {x: 0, y: 0, z: 0}
+  moveSpeed: 0
+  distanceThreshold: 0
