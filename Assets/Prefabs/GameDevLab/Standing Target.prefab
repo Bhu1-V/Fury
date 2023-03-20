@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7436096205302460076}
   - component: {fileID: 7459404419799388014}
   - component: {fileID: 1324291633067622059}
+  - component: {fileID: 8406029146201821521}
   m_Layer: 0
   m_Name: Standing Target
   m_TagString: Untagged
@@ -53,6 +54,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -106,7 +108,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 7450124528966903268}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 427961f067786294880b83fad5ecf8d0, type: 3}
+  m_Script: {fileID: 11500000, guid: dc838b8a263a3e343bc4a21f5e490240, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPos: {x: 0, y: 0, z: 0}
+  endPos: {x: 0, y: 0, z: 0}
+  moveSpeed: 0
+  distanceThreshold: 0
+--- !u!114 &8406029146201821521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7450124528966903268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4251fdeec9a7c2a4db8dd19c0a61ab1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100

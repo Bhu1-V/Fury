@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6669911585149180565}
   - component: {fileID: 6640342055726201687}
   - component: {fileID: 3002969747168271965}
-  - component: {fileID: 1387585884613825577}
+  - component: {fileID: 3355421926826754982}
   m_Layer: 0
   m_Name: Moving Target
   m_TagString: Untagged
@@ -115,7 +115,7 @@ MonoBehaviour:
   endPos: {x: 0, y: 0, z: 0}
   moveSpeed: 0
   distanceThreshold: 0
---- !u!114 &1387585884613825577
+--- !u!114 &3355421926826754982
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,10 +124,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6685087802188992989}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc838b8a263a3e343bc4a21f5e490240, type: 3}
+  m_Script: {fileID: 11500000, guid: 4251fdeec9a7c2a4db8dd19c0a61ab1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPos: {x: 0, y: 0, z: 0}
-  endPos: {x: 0, y: 0, z: 0}
-  moveSpeed: 0
-  distanceThreshold: 0
+  health: 150
